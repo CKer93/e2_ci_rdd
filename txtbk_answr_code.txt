@@ -1,0 +1,12 @@
+'suitable bandwidth': 0.1
+'order of the polynomial': 2
+'add higher polynomial term to linear model: formula = y ~ x + I(x^2); stat_smooth(aes(lagdemvoteshare, score, group = gg_group), method = "lm", formula = y ~ x + I(x^2))
+
+Additional plots to visualize the final graph (gamma)
+ ggplot(lmb_data, aes(lagdemvoteshare, score)) +
+  xlab("Democrat Vote Share, time t") +
+  ylab("ADA Score, time t+1") +
+  geom_point(aes(x = lagdemvoteshare, y = score), data = agg_lmb_data) +
+  stat_smooth(aes(lagdemvoteshare, score, group = gg_group), method = "lm", formula = y ~ x + I(x^2)) +
+  xlim(0,1) + ylim(0,100) +
+  geom_vline(xintercept = 0.5)
